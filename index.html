@@ -9,36 +9,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="entrada">Glossary</h1> <!--This will be a glossary dedicated to CIESA — terms and words to help-->
-    <p class="ciesadescricao"> Ciesa Edition</p>
-    <p class="beta"> BETA</p>
+    <div class="container">
+        <div class="content">
+            <header>
+                <h1 class="entrada">Glossary</h1> <!-- glossary title -->
+                <p class="ciesadescricao">Ciesa Edition</p>
+                <p class="beta">BETA</p>
+            </header>
 
-    <div class="pergunta" id="pergunta">
-        <input type="text" id="campo-pesquisa" placeholder="Type your question...">
-        <button class="buscar" id="botao-pesquisa" onclick="buscar()">Search</button>
+            <main>
+                <div class="search-container" id="pergunta">
+                    <input type="text" id="campo-pesquisa" placeholder="Type your question...">
+                    <button class="buscar" id="botao-pesquisa" onclick="buscar()">Search</button>
+                </div>
+                <div class="buscar" id="buscar">
+                    <!-- search results go here -->
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p>contact <a href="https://github.com/nevext" target="_blank" rel="external">Glossary Admin</a></p>
+            <p class="direitos">Website ACADEMIC for CIESA &copy; 2026</p>
+        </footer>
+
+        <p class="frase1">You can add new terms freely</p>
+
+
     </div>
 
-    <div class="buscar" id="buscar">
-        <!-- Resultados da busca aparecerão aqui -->
-    </div>
-
-    <div class="footer">
-        <p>contact <a href="https://github.com/nevext" target="_blank" rel="external">Glossary Admin</a></p>
-    </div>
-
-    <p class="direitos"> Website ACADEMIC for CIESA &copy; 2026 </p>
-
-    <hr class="hr"> <!-- o fotter traço tlgd ficar ali no bglh-->
-
-    <p class="frase1"> You can add new terms freely </p>
-
-    <div id="mobile-warning">
-        <h2>Not available</h2>
-        <p>Desktop only</p>
-        <img src="media/gif/Animation No Sticker by Holler Studios.gif">gif</video>
-    </div>
-
-    <script src="script.js">
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

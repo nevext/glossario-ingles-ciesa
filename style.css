@@ -1,213 +1,191 @@
+/* common font face definition */
 @font-face {
     font-family: MerriweatherSans-Bold;
-    src: url(media/fonts/MerriweatherSans-Bold.ttf);
+    src: url(media/fonts/MerriweatherSans-Bold.ttf) format("truetype");
     font-weight: 700;
 }
 
-.entrada {
-    font-family: MerriweatherSans-Bold;
-    color: rgb(34, 0, 228);
-    display: inline-block;
+/* RESET & BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: MerriweatherSans-Bold, sans-serif;
+    line-height: 1.4;
+    color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.container {
+    flex: 1 0 auto;
+    /* allow expansion to fill any viewport width */
+    max-width: none;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* fill entire viewport so footer can sit at bottom */
+    min-height: 100vh;
+}
+
+/* wrap header+search content to center as a block */
+.content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 60vh;
-    font-size: 100px;
-    padding: 0;
-    margin: 0 auto;
-    position: absolute;
-    top: 330px;
-    left: 750px;
+    width: 100%;
+}
+
+footer {
+    margin-top: auto; /* push footer to bottom when there's extra space */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.entrada,
+.entradaresult {
+    color: rgb(34, 0, 228);
+    font-size: clamp(2rem, 8vw, 6rem);
+}
+
+/* make the result title link-friendly */
+.entradaresult-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.beta,
+.betaresult {
+    color: rgb(70, 67, 67);
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    margin-top: 0.5rem;
 }
 
 .ciesadescricao {
-    font-family: MerriweatherSans-Bold;
-    color: rgb(0, 0, 0);
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    font-size: 20px;
-    padding: 0%;
-    position: absolute;
-    top: 450px;
-    left: 900px;
-    
-    
+    color: #000;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-top: 0.25rem;
 }
 
-.beta {
-    font-family: MerriweatherSans-Bold;
-    color: rgb(70, 67, 67);
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    font-size: 20px;
-    padding: 0%;
-    position: absolute;
-    top: 320px;
-    left: 1160px;
+.search-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
 }
 
-.pergunta {
-    position: absolute;
-    top: 550px;
-    left: 860px;
+.search-container input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
 }
 
-.footer {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.658);
-    font-size: 14px;
-    top: 935px;
+.search-container button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-.hr {
-    position: absolute;
-    top: 930px;
-    left: 0px;
-    width: 1910px;
-    border-top: 1px solid rgba(0, 0, 0, 0.062);
+main {
+    width: 100%;
 }
 
-.direitos {
-    position: absolute;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.658);
-    font-size: 14px;
-    top: 935px;
-    left: 1600px;
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
 }
 
-.frase1 {
-    position: absolute;
-    top: 563px;
-    left: 870px;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.644);
-    font-size: 10px;
+footer a {
+    color: inherit;
+    text-decoration: underline;
 }
 
-/* Below: CSS for result.html */
-
-@font-face {
-    font-family: MerriweatherSans-Bold;
-    src: url(media/fonts/MerriweatherSans-Bold.ttf);
-    font-weight: 700;
-}
-
-.entradaresult {
-    font-family: MerriweatherSans-Bold;
-    color: rgb(34, 0, 228);
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
-    font-size: 50px;
-    padding: 0;
-    margin: 0 auto;
-    position: absolute;
-    top: 30px;
-    left: 50px;
-}
-
-/* link inside the title (entradaresult) — clickable without color change or decoration */
-.entradaresult-link {
-    color: inherit;           /* mantém a mesma cor do h1 */
-    text-decoration: none;    /* remove sublinhado */
-    cursor: pointer;          /* indica que é clicável */
-    display: inline-block;
-}
-.entradaresult-link:visited,
-.entradaresult-link:hover,
-.entradaresult-link:active {
-    color: inherit;           /* evita mudança de cor após visita/hover/active */
-    text-decoration: none;    /* nada de underline */
-}
-
-.ciesadescricaoresult { 
-    font-family: MerriweatherSans-Bold;
-    color: rgb(0, 0, 0);
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    font-size: 20px;
-    padding: 0%;
-    position: absolute;
-    top: 60px;
-    left: 100px;
-    
-}
-
-.betaresult {
-    font-family: MerriweatherSans-Bold;
-    color: rgba(70, 67, 67, 0.384);
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    font-size: 16px;
-    padding: 0%;
-    position: absolute;
-    top: 60px;
-    left: 100px;
-}
-
-.perguntaresult {
-    position: absolute;
-    top: 50px;
-    left: 280px;
-}
-
-.footerresult {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.658);
-    font-size: 14px;
-    top: 935px;
-}
-
-.hrresult {
-    position: absolute;
-    top: 930px;
-    left: 0px;
-    width: 1910px;
-    border-top: 1px solid rgba(0, 0, 0, 0.062);
-}
-
+.direitos,
 .direitosresult {
-    position: absolute;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.658);
-    font-size: 14px;
-    top: 935px;
-    left: 1600px;
+    margin-top: 0.5rem;
 }
 
+.frase1,
 .frase1result {
-    position: absolute;
-    top: 40px;
-    left: 1680px;
-    font-family: MerriweatherSans-Bold;
-    color: rgba(0, 0, 0, 0.644);
-    font-size: 10px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.64);
+    text-align: center;
 }
+
+#mobile-warning {
+    display: none; /* hide by default */
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* MEDIA QUERIES */
+
+/* small devices (phones) */
+@media (max-width: 767px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container button {
+        width: 100%;
+    }
+}
+
+/* very large screens (digital board, projector, 4k) */
+@media (min-width: 1921px) {
+    body {
+        font-size: 1.2rem;
+    }
+
+    .entrada,
+    .entradaresult {
+        font-size: 8rem;
+    }
+
+    .search-container input,
+    .search-container button {
+        font-size: 1.25rem;
+        padding: 1rem 2rem;
+    }
+}
+
+/* show mobile warning for narrow viewports */
+@media (max-width: 480px) {
+    #mobile-warning {
+        display: block;
+    }
+}
+
 /* ====== Rules for results generated by script.js ====== */
 .glossario-list {
     padding: 6px;
     margin-top: 12px;
     background: transparent;
     border-radius: 6px;
-    font-size: 90px;
-    left: 100px;
-    top: 200px;
-    position: absolute;
+    /* make list take full width of container */
+    width: 100%;
 }
 
 .glossario-item {
@@ -234,26 +212,4 @@
     padding: 16px;
 }
 
-/* Por padrão, não mostra o aviso */
-#mobile-warning {
-  display: none;
-  text-align: center;
-  margin-top: 50px;
-}
-
-/* Quando a tela for menor que 768px (celular), mostra o aviso e esconde o conteúdo */
-@media (max-width: 1650px) {
-  body > *:not(#mobile-warning) {
-    display: none; /* esconde todo o resto */
-    background-color: brown;
-  }
-
-  #mobile-warning {
-    display: block; /* mostra o aviso */
-  }
-
-  #mobile-warning img {
-    max-width: 90%; /* ajusta o tamanho da imagem para caber na tela */
-    height: auto;
-  }
-}
+/* previous mobile-warning overrides removed; handled above */
