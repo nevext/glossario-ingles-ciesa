@@ -532,7 +532,10 @@ const isResultPage = window.location.pathname.includes('result.html');
 function buscar() {
   const input = document.getElementById('campo-pesquisa');
   const termo = input?.value.trim();
-  if (!termo || !currentMode) return;
+  if (!termo || !currentMode) {
+    alert("Choose a version first.");
+    return;
+  }
   window.location.href = `result.html?termo=${encodeURIComponent(termo)}&mode=${currentMode}`;
 }
 
@@ -585,59 +588,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdown = document.getElementById('autocomplete-dropdown');
   const botao    = document.getElementById('botao-pesquisa');
 
-  // ── Result page init ──
   if (isResultPage) {
-    const params  = new URLSearchParams(window.location.search);
-    const termoURL = params.get('termo');
-    const modeURL  = params.get('mode');
-
-    if (!termoURL || !modeURL) { window.location.href = 'index.html'; return; }
-
-    // Apply mode class for styling only (no backgrounds)
-    currentMode = modeURL;
-    document.body.classList.add(modeURL + '-mode');
-
-    // Mark active button
-    const btnLaw  = document.getElementById('btn-law');
-    const btnTech = document.getElementById('btn-tech');
-    if (modeURL === 'law'  && btnLaw)  btnLaw.classList.add('active');
-    if (modeURL === 'tech' && btnTech) btnTech.classList.add('active');
-
-    if (inputEl) inputEl.value = termoURL;
-
-    executarBusca(termoURL, modeURL);
-
-    // New search on result page
-    if (botao) {
-      botao.addEventListener('click', () => {
-        const t = inputEl?.value.trim();
-        if (t) executarBusca(t, currentMode);
-      });
-    }
-    if (inputEl) {
-      inputEl.addEventListener('keydown', e => {
-        if (e.key === 'Enter') { const t = inputEl.value.trim(); if (t) executarBusca(t, currentMode); }
-      });
-    }
-
-    // Autocomplete on result page
-    setupAutocomplete(inputEl, dropdown);
-    return; // stop here for result page
+    // ...existing code...
+    return;
   }
 
-  // ── Index page init ──
-  // Check if coming from result page with saved mode
-  const saved = localStorage.getItem('glossary-mode');
-  if (saved === 'law' || saved === 'tech') {
-    lastModeSwitch = 0;
-    setMode(saved, true);
-  }
+  // INDEX começa neutro
+  currentMode = null;
 
   if (botao) {
     botao.addEventListener('click', buscar);
   }
+
   if (inputEl) {
-    inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') buscar(); });
+    inputEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter') buscar();
+    });
   }
 
   setupAutocomplete(inputEl, dropdown);
