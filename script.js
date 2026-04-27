@@ -759,38 +759,29 @@ function stopCodeParticles() {
 var lastModeSwitch = 0;
 var COOLDOWN_MS = 10000;
 var damaVideo = null;
-var damaReverseTimer = null;
-var DAMA_REVERSE_STEP = 0.033;
 
-function stopReverseDamaVideo() {
-  if (damaReverseTimer) {
-    clearInterval(damaReverseTimer);
-    damaReverseTimer = null;
-  }
-}
-
-function startReverseDamaVideo() {
+function startDamaVideo() {
   if (!damaVideo) damaVideo = document.getElementById('dama-video');
   if (!damaVideo) return;
 
-  stopReverseDamaVideo();
-  damaVideo.pause();
+  damaVideo.loop = true;
+  damaVideo.muted = true;
+  damaVideo.playbackRate = 1;
 
-  if (damaVideo.duration && isFinite(damaVideo.duration)) {
-    damaVideo.currentTime = Math.max(damaVideo.duration - DAMA_REVERSE_STEP, 0);
+  var playPromise = damaVideo.play();
+  if (playPromise && typeof playPromise.catch === 'function') {
+    playPromise.catch(function() {
+      // Ignore autoplay/play promise errors while the browser negotiates media state.
+    });
   }
+}
 
-  damaReverseTimer = setInterval(function() {
-    if (!damaVideo) return;
-    if (damaVideo.readyState < 2 || damaVideo.seeking) return;
+function stopDamaVideo() {
+  if (!damaVideo) damaVideo = document.getElementById('dama-video');
+  if (!damaVideo) return;
 
-    var duration = damaVideo.duration;
-    if (!duration || !isFinite(duration)) return;
-
-    var nextTime = damaVideo.currentTime - DAMA_REVERSE_STEP;
-    if (nextTime <= 0.01) nextTime = Math.max(duration - DAMA_REVERSE_STEP, 0);
-    damaVideo.currentTime = nextTime;
-  }, 33);
+  damaVideo.pause();
+  damaVideo.currentTime = 0;
 }
 
 function setMode(mode, skipCooldown) {
@@ -853,7 +844,7 @@ function applyModeVisuals(mode) {
 
     stopNeuralNet();
     stopCodeParticles();
-    startReverseDamaVideo();
+    startDamaVideo();
     if (btnLaw)  btnLaw.classList.add('active');
     if (btnTech) btnTech.classList.remove('active');
 
@@ -869,7 +860,7 @@ function applyModeVisuals(mode) {
 
     startNeuralNet();
     startCodeParticles();
-    stopReverseDamaVideo();
+    stopDamaVideo();
     if (btnTech) btnTech.classList.add('active');
     if (btnLaw)  btnLaw.classList.remove('active');
   }
@@ -936,15 +927,15 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!damaVideo) return;
 
   damaVideo.addEventListener('loadedmetadata', function() {
-    if (currentMode === 'law') startReverseDamaVideo();
+    if (currentMode === 'law') startDamaVideo();
   });
 
   damaVideo.addEventListener('canplay', function() {
-    if (currentMode === 'law' && !damaReverseTimer) startReverseDamaVideo();
+    if (currentMode === 'law' && damaVideo.paused) startDamaVideo();
   });
 
   damaVideo.addEventListener('stalled', function() {
-    if (currentMode === 'law') damaVideo.load();
+    if (currentMode === 'law' && damaVideo.paused) startDamaVideo();
   });
 });
 
