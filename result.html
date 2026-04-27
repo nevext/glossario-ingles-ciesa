@@ -3,38 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glossary CIESA</title>
+    <title>Glossary CIESA — Results</title>
     <link rel="shortcut icon" href="media/favicon/ciesa-favicon.png" type="image/x-icon">
-
     <link rel="stylesheet" href="style.css">
+    <style>
+    @font-face { font-family: 'TrajanPro'; src: url('media/fonts/TrajanPro-Regular.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'TrajanPro'; src: url('media/fonts/TrajanPro-Bold.ttf') format('truetype'); font-weight: 700; }
+    </style>
 </head>
-<body>
+<body class="result-page">
+
+    <!-- Cooldown toast -->
+    <div class="cooldown-toast" id="cooldown-toast">
+        ⏳ Wait <span id="cooldown-seconds">10</span>s to switch mode
+    </div>
+
     <div class="container">
-        <div class="content">
+        <div class="content result-content">
             <header>
-                <h1 class="entradaresult"><a href="index.html" class="entradaresult-link" aria-label="Go to homepage">Glossary</a></h1>
-                <p class="betaresult">BETA</p>
+                <h1 class="entrada result-title">
+                    <a href="index.html" class="entradaresult-link">Glossary</a>
+                </h1>
             </header>
 
+            <div class="mode-toggle">
+                <button class="mode-btn" id="btn-law" onclick="goToMode('law')">Law</button>
+                <button class="mode-btn" id="btn-tech" onclick="goToMode('tech')">Tech</button>
+            </div>
+
             <main>
-                <div class="search-container" id="pergunta">
-                    <input type="text" id="campo-pesquisa" placeholder="Type your question...">
-                    <button class="buscarresult" id="botao-pesquisa">Search</button>
+                <div class="search-container">
+                    <div class="autocomplete-wrap">
+                        <input type="text" id="campo-pesquisa" placeholder="Search again..." autocomplete="off">
+                        <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
+                    </div>
+                    <button id="botao-pesquisa">Search</button>
                 </div>
-                <div class="buscarresult" id="buscar">
-                    <!-- search results go here -->
-                </div>
+                <div id="resultados"></div>
             </main>
         </div>
 
         <footer>
             <p>contact <a href="https://github.com/nevext" target="_blank" rel="external">Glossary Admin</a></p>
-            <p class="direitosresult">Website ACADEMIC for CIESA &copy; 2026</p>
+            <p class="direitos">Website ACADEMIC for CIESA &copy; 2026</p>
         </footer>
-
-        <p class="frase1result">You can add new terms freely</p>
-
-
+        <p class="frase1">You can add new terms freely</p>
     </div>
 
     <script src="script.js"></script>

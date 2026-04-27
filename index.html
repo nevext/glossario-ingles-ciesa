@@ -5,25 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glossary CIESA</title>
     <link rel="shortcut icon" href="media/favicon/ciesa-favicon.png" type="image/x-icon">
-
     <link rel="stylesheet" href="style.css">
+    <style>
+    @font-face { font-family: 'TrajanPro'; src: url('media/fonts/TrajanPro-Regular.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'TrajanPro'; src: url('media/fonts/TrajanPro-Bold.ttf') format('truetype'); font-weight: 700; }
+    </style>
 </head>
 <body>
+
+    <!-- LAW: Dama background -->
+    <div class="dama-wrap" id="dama-wrap">
+        <img src="media/img/dama.png" alt="">
+    </div>
+
+    <!-- LAW corner badges -->
+    <div class="law-badge" id="law-badge">LAW VERSION</div>
+    <div class="corner-info" id="corner-info">
+        <span class="corner-ciesa">Ciesa Edition</span>
+        <span class="corner-beta">BETA</span>
+    </div>
+
+    <!-- TECH corner badges -->
+    <div class="tech-badge" id="tech-badge">TECH VERSION</div>
+    <div class="corner-info-tech" id="corner-info-tech">
+        <span class="corner-ciesa-tech">Ciesa Edition</span>
+        <span class="corner-beta-tech">BETA</span>
+    </div>
+
+    <!-- Cooldown toast -->
+    <div class="cooldown-toast" id="cooldown-toast">
+        ⏳ Wait <span id="cooldown-seconds">10</span>s to switch mode
+    </div>
+
     <div class="container">
         <div class="content">
             <header>
-                <h1 class="entrada">Glossary</h1> <!-- glossary title -->
-                <p class="ciesadescricao">Ciesa Edition</p>
-                <p class="beta">BETA</p>
+                <h1 class="entrada">Glossary</h1>
+                <p class="ciesadescricao" id="inline-ciesa">Ciesa Edition</p>
+                <p class="beta" id="inline-beta">BETA</p>
             </header>
 
+            <div class="mode-toggle">
+                <button class="mode-btn" id="btn-law" onclick="setMode('law')">Law</button>
+                <button class="mode-btn" id="btn-tech" onclick="setMode('tech')">Tech</button>
+            </div>
+
             <main>
-                <div class="search-container" id="pergunta">
-                    <input type="text" id="campo-pesquisa" placeholder="Type your question...">
-                    <button class="buscar" id="botao-pesquisa" onclick="buscar()">Search</button>
-                </div>
-                <div class="buscar" id="buscar">
-                    <!-- search results go here -->
+                <div class="search-container">
+                    <div class="autocomplete-wrap">
+                        <input type="text" id="campo-pesquisa" placeholder="Choose a version above..." autocomplete="off" disabled>
+                        <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
+                    </div>
+                    <button id="botao-pesquisa" onclick="buscar()" disabled>Search</button>
                 </div>
             </main>
         </div>
@@ -32,10 +65,7 @@
             <p>contact <a href="https://github.com/nevext" target="_blank" rel="external">Glossary Admin</a></p>
             <p class="direitos">Website ACADEMIC for CIESA &copy; 2026</p>
         </footer>
-
         <p class="frase1">You can add new terms freely</p>
-
-
     </div>
 
     <script src="script.js"></script>
