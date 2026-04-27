@@ -13,7 +13,7 @@
 </head>
 <body class="result-page">
 
-    <!-- Cooldown toast -->
+    <div class="mode-toast" id="mode-toast"></div>
     <div class="cooldown-toast" id="cooldown-toast">
         ⏳ Wait <span id="cooldown-seconds">10</span>s to switch mode
     </div>
@@ -21,8 +21,9 @@
     <div class="container">
         <div class="content result-content">
             <header>
+                <!-- Clicking Glossary always goes to neutral index -->
                 <h1 class="entrada result-title">
-                    <a href="index.html" class="entradaresult-link">Glossary</a>
+                    <a href="index.html" class="entradaresult-link" onclick="localStorage.removeItem('glossary-mode')">Glossary</a>
                 </h1>
             </header>
 

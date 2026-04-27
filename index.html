@@ -11,12 +11,47 @@
     @font-face { font-family: 'TrajanPro'; src: url('media/fonts/TrajanPro-Bold.ttf') format('truetype'); font-weight: 700; }
     </style>
 </head>
+<!-- Help button -->
+<button class="help-btn" id="help-btn" onclick="toggleHelp()">?</button>
+
+<div class="help-overlay" id="help-overlay" onclick="closeHelp(event)">
+    <div class="help-box">
+        <button class="help-close" onclick="closeHelp()">✕</button>
+        <h2 class="help-title">How it works</h2>
+        <p class="help-text">
+            Search for any word <strong>in English</strong> and the glossary will return everything related to it — 
+            matching both the term and its description.
+        </p>
+        <p class="help-text">
+            Results depend on the version you choose:
+        </p>
+        <ul class="help-list">
+            <li><strong>Law</strong> — legal terms, principles, laws and procedures from Brazilian law.</li>
+            <li><strong>Tech</strong> — programming languages, commands, concepts and tools.</li>
+        </ul>
+        <p class="help-text">
+            Some content may still be missing. If you'd like to suggest a new term:
+        </p>
+        <a class="help-mailto" href="mailto:nevext@outlook.com?subject=New glossary term suggestion">
+            ✉ nevext@outlook.com
+        </a>
+    </div>
+</div>
 <body>
 
-    <!-- LAW: Dama background -->
+    <!-- LAW: Dama (webm) -->
     <div class="dama-wrap" id="dama-wrap">
-        <img src="media/img/dama.png" alt="">
+        <video id="dama-video" autoplay loop muted playsinline>
+            <source src="media/webm/animacao.webm" type="video/webm">
+            <img src="media/img/dama.png" alt="">
+        </video>
     </div>
+
+    <!-- TECH: Neural network canvas -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- TECH: Code particles -->
+    <div class="code-particles" id="code-particles"></div>
 
     <!-- LAW corner badges -->
     <div class="law-badge" id="law-badge">LAW VERSION</div>
@@ -32,7 +67,8 @@
         <span class="corner-beta-tech">BETA</span>
     </div>
 
-    <!-- Cooldown toast -->
+    <!-- Toast notifications -->
+    <div class="mode-toast" id="mode-toast"></div>
     <div class="cooldown-toast" id="cooldown-toast">
         ⏳ Wait <span id="cooldown-seconds">10</span>s to switch mode
     </div>
@@ -40,7 +76,7 @@
     <div class="container">
         <div class="content">
             <header>
-                <h1 class="entrada">Glossary</h1>
+                <h1 class="entrada" id="main-title">Glossary</h1>
                 <p class="ciesadescricao" id="inline-ciesa">Ciesa Edition</p>
                 <p class="beta" id="inline-beta">BETA</p>
             </header>
@@ -50,13 +86,14 @@
                 <button class="mode-btn" id="btn-tech" onclick="setMode('tech')">Tech</button>
             </div>
 
-            <main>
+            <!-- Search — hidden until mode selected -->
+            <main id="search-area" style="display:none;">
                 <div class="search-container">
                     <div class="autocomplete-wrap">
-                        <input type="search" id="campo-pesquisa" placeholder="Choose a version above..." autocomplete="off" disabled enterkeyhint="search">
+                        <input type="search" id="campo-pesquisa" placeholder="Type your question..." autocomplete="off" enterkeyhint="search">
                         <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
                     </div>
-                    <button id="botao-pesquisa" onclick="buscar()" disabled>Search</button>
+                    <button id="botao-pesquisa">Search</button>
                 </div>
             </main>
         </div>
