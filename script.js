@@ -758,6 +758,40 @@ function stopCodeParticles() {
 // ══════════════════════════════════════
 var lastModeSwitch = 0;
 var COOLDOWN_MS = 10000;
+var damaVideo = null;
+var damaReverseTimer = null;
+var DAMA_REVERSE_STEP = 0.033;
+
+function stopReverseDamaVideo() {
+  if (damaReverseTimer) {
+    clearInterval(damaReverseTimer);
+    damaReverseTimer = null;
+  }
+}
+
+function startReverseDamaVideo() {
+  if (!damaVideo) damaVideo = document.getElementById('dama-video');
+  if (!damaVideo) return;
+
+  stopReverseDamaVideo();
+  damaVideo.pause();
+
+  if (damaVideo.duration && isFinite(damaVideo.duration)) {
+    damaVideo.currentTime = Math.max(damaVideo.duration - DAMA_REVERSE_STEP, 0);
+  }
+
+  damaReverseTimer = setInterval(function() {
+    if (!damaVideo) return;
+    if (damaVideo.readyState < 2 || damaVideo.seeking) return;
+
+    var duration = damaVideo.duration;
+    if (!duration || !isFinite(duration)) return;
+
+    var nextTime = damaVideo.currentTime - DAMA_REVERSE_STEP;
+    if (nextTime <= 0.01) nextTime = Math.max(duration - DAMA_REVERSE_STEP, 0);
+    damaVideo.currentTime = nextTime;
+  }, 33);
+}
 
 function setMode(mode, skipCooldown) {
   var now = Date.now();
@@ -819,6 +853,7 @@ function applyModeVisuals(mode) {
 
     stopNeuralNet();
     stopCodeParticles();
+    startReverseDamaVideo();
     if (btnLaw)  btnLaw.classList.add('active');
     if (btnTech) btnTech.classList.remove('active');
 
@@ -834,6 +869,7 @@ function applyModeVisuals(mode) {
 
     startNeuralNet();
     startCodeParticles();
+    stopReverseDamaVideo();
     if (btnTech) btnTech.classList.add('active');
     if (btnLaw)  btnLaw.classList.remove('active');
   }
@@ -896,41 +932,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  var video = document.getElementById('dama-video');
-  if (!video) return;
+  damaVideo = document.getElementById('dama-video');
+  if (!damaVideo) return;
 
-  var reverseFrame = null;
-  var lastTick = 0;
+  damaVideo.addEventListener('loadedmetadata', function() {
+    if (currentMode === 'law') startReverseDamaVideo();
+  });
 
-  function reverseStep(now) {
-    if (!video.duration || !isFinite(video.duration)) {
-      reverseFrame = requestAnimationFrame(reverseStep);
-      return;
-    }
+  damaVideo.addEventListener('canplay', function() {
+    if (currentMode === 'law' && !damaReverseTimer) startReverseDamaVideo();
+  });
 
-    if (!lastTick) lastTick = now;
-    var elapsed = now - lastTick;
-
-    if (elapsed >= 33) {
-      var steps = Math.floor(elapsed / 33);
-      lastTick = now - (elapsed % 33);
-
-      var nextTime = video.currentTime - (steps * 0.033);
-      if (nextTime <= 0) nextTime = video.duration;
-      video.currentTime = nextTime;
-    }
-
-    reverseFrame = requestAnimationFrame(reverseStep);
-  }
-
-  video.addEventListener('loadedmetadata', function() {
-    video.pause();
-    if (video.duration && isFinite(video.duration)) {
-      video.currentTime = video.duration;
-    }
-    if (reverseFrame) cancelAnimationFrame(reverseFrame);
-    lastTick = 0;
-    reverseFrame = requestAnimationFrame(reverseStep);
+  damaVideo.addEventListener('stalled', function() {
+    if (currentMode === 'law') damaVideo.load();
   });
 });
 
