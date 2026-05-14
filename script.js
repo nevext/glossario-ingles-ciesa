@@ -317,108 +317,111 @@ const techGlossario = {
 //   GLOSSÁRIO LAW — pesquisa em inglês, descrição em PT-BR
 // ══════════════════════════════════════════════════════════
 const lawGlossario = {
+  // Constitucional
   "constitutional law": "Direito Constitucional — estudo da Constituição, estrutura do Estado e direitos fundamentais.",
-  "constitutional law I": "Princípios constitucionais, separação de poderes e controle de constitucionalidade.",
-  "constitutional law II": "Direitos fundamentais, ações constitucionais e interpretação constitucional.",
-  "due process": "Princípio do Devido Processo Legal — garantia de procedimento justo com contraditório e ampla defesa (CF art. 5º, LIV).",
-  "habeas corpus": "Ação constitucional que protege liberdade de locomoção contra prisão ilegal (CF art. 5º, LXVIII).",
-  "habeas data": "Ação para acesso ou retificação de informações pessoais em cadastros públicos (CF art. 5º, LXXII).",
-  "writ of mandamus": "Ação para proteger direito líquido e certo contra ato ilegal de autoridade pública (CF art. 5º, LXIX).",
-  "writ of injunction": "Ação que supre omissão normativa que inviabilize exercício de direito constitucional (CF art. 5º, LXXI).",
-  "judicial review": "Controle de constitucionalidade — poder do Judiciário de anular leis contrárias à Constituição.",
-  "separation of powers": "Tripartição dos poderes em Executivo, Legislativo e Judiciário com sistema de freios e contrapesos.",
-  "checks and balances": "Mecanismo de controle mútuo entre os poderes para evitar concentração e abuso de poder.",
-  "fundamental rights": "Direitos humanos positivados na Constituição: vida, liberdade, igualdade, segurança e propriedade.",
-  "constitutional amendment": "Emenda Constitucional — alteração formal da CF, aprovada por 3/5 em dois turnos em cada casa.",
-  "sovereignty": "Poder supremo do Estado internamente e independência frente a outros Estados.",
-  "democracy": "Regime político em que o poder emana do povo, exercido diretamente ou por representantes eleitos.",
+  "ius constitutionale": "Direito Constitucional — estudo da Constituição, estrutura do Estado e direitos fundamentais.",
 
-  "popular action": "Ação que qualquer cidadão pode ajuizar para anular ato lesivo ao patrimônio público (CF art. 5º, LXXIII).",
-  "entrenched clause": "Cláusulas imutáveis da CF: forma federativa, voto direto, separação de poderes e direitos individuais.",
+  "due process": "Princípio do Devido Processo Legal — garantia de procedimento justo.",
+  "due process of law": "Princípio do Devido Processo Legal — garantia de procedimento justo.",
 
-  "administrative law": "Direito Administrativo — normas da organização e atuação da Administração Pública.",
-  "administrative law I": "Princípios administrativos, poderes, atos administrativos e regime jurídico.",
-  "administrative law II": "Licitações, contratos administrativos e responsabilidade civil do Estado.",
-  "public bidding": "Licitação — procedimento para contratos públicos. Modalidades: concorrência, pregão, tomada de preços.",
-  "administrative liability": "Responsabilidade objetiva do Estado por danos causados por seus agentes (CF art. 37, §6º).",
-  "improbity": "Ato ilícito do agente público que causa dano ao erário ou enriquecimento ilícito. Lei 8.429/92.",
+  "habeas corpus": "Ação constitucional que protege liberdade de locomoção contra prisão ilegal.",
+  "habeas data": "Ação para acesso ou retificação de dados pessoais.",
 
-  "principle of legality": "Administração só pode fazer o que a lei expressamente autoriza (vinculação positiva à lei).",
-  "principle of impersonality": "Atos administrativos devem buscar o interesse público, sem privilégios pessoais.",
-  "principle of morality": "Administração deve agir com ética, boa-fé e honestidade, além do mero cumprimento da lei.",
-  "principle of publicity": "Atos administrativos devem ser transparentes e acessíveis ao público, salvo exceções legais.",
-  "principle of efficiency": "Administração deve alcançar melhores resultados com menor custo e no menor tempo. EC 19/98.",
+  "writ of mandamus": "Mandado de segurança — proteção de direito líquido e certo.",
+  "mandamus": "Mandado de segurança — proteção de direito líquido e certo.",
 
-  "civil law": "Direito Civil — normas que regulam relações privadas entre pessoas físicas e jurídicas.",
-  "civil law I": "Parte Geral: pessoas, bens, fatos jurídicos e prescrição/decadência.",
-  "civil law II": "Direito das Obrigações: fontes, modalidades, extinção e inadimplemento.",
-  "civil law III": "Direito de Família e Sucessões.",
-  "legal capacity": "Aptidão para ser titular de direitos e obrigações (capacidade de direito) e exercê-los (capacidade de fato).",
-  "prescription": "Prescrição — perda do direito de ação pelo decurso do tempo sem exercício. Extingue pretensão.",
-  "decadence": "Decadência — perda do direito em si pelo decurso do tempo. Não se interrompe nem suspende.",
-  "obligation": "Vínculo jurídico que obriga alguém (devedor) a dar, fazer ou não fazer algo ao credor.",
-  "contract": "Acordo de vontades que cria, modifica ou extingue direitos. Requisitos: partes, objeto e forma.",
-  "void contract": "Contrato nulo — ineficaz por vício grave (ilicitude, incapacidade absoluta). Não convalida.",
-  "voidable contract": "Contrato anulável — pode ser anulado por vício de vontade (erro, dolo, coação).",
-  "contractual breach": "Inadimplemento — descumprimento de obrigação contratual. Gera responsabilidade e indenização.",
-  "damages": "Indenização por danos materiais (emergentes e lucros cessantes) e morais.",
-  "tort law": "Responsabilidade Civil — obrigação de indenizar dano causado a outrem. Subjetiva (culpa) ou objetiva.",
-  "property law": "Direito das Coisas — posse, propriedade, direitos reais e usucapião.",
+  "writ of injunction": "Mandado de injunção — supre omissão normativa.",
+  "iniunctio": "Mandado de injunção — supre omissão normativa.",
 
-  "adverse possession": "Usucapião — aquisição de propriedade pelo exercício continuado e pacífico da posse por prazo legal.",
-  "mortgage": "Hipoteca — direito real de garantia sobre bem imóvel sem transferência da posse.",
+  "judicial review": "Controle de constitucionalidade.",
+  "revisio iudicialis": "Controle de constitucionalidade.",
 
-  "family law": "Direito de Família — casamento, união estável, regimes de bens, filiação, alimentos e guarda.",
-  "forced heir": "Descendentes, ascendentes e cônjuge têm direito à metade da herança (legítima). CC art. 1.845.",
+  "separation of powers": "Separação de poderes.",
+  "separatio potestatum": "Separação de poderes.",
 
-  "criminal law": "Direito Penal — define crimes, contravenções e aplica penas ou medidas de segurança.",
+  "checks and balances": "Sistema de freios e contrapesos.",
+  "ponderatio potestatum": "Sistema de freios e contrapesos.",
 
-  "intentional crime": "Crime doloso — agente quis o resultado ou assumiu o risco de produzi-lo (dolo direto ou eventual).",
-  "negligent crime": "Crime culposo — agente causou resultado por imprudência, negligência ou imperícia. Pena menor.",
-  "attempt": "Tentativa — início de execução do crime que não se consumou por circunstâncias alheias à vontade.",
+  "fundamental rights": "Direitos fundamentais.",
+  "iura fundamentalia": "Direitos fundamentais.",
 
-  "civil procedure": "Processo Civil — regras para tutela jurisdicional de direitos privados. CPC/2015.",
-  "criminal procedure": "Processo Penal — investigação, ação penal, instrução e julgamento. CPP/1941.",
+  // Administrativo
+  "administrative law": "Direito Administrativo.",
+  "ius administrativum": "Direito Administrativo.",
 
-  "labor law": "Direito do Trabalho — regulação das relações de emprego e proteção do trabalhador. CLT.",
-  "workplace bullying": "Exposição repetida a situações humilhantes e vexatórias no trabalho. Gera indenização.",
-  "sexual harassment": "Condicionamento de vantagem a favor sexual. Crime (CP art. 216-A) e causa de justa causa.",
+  "principle of legality": "Princípio da legalidade.",
+  "principium legalitatis": "Princípio da legalidade.",
 
-  "tax law": "Direito Tributário — criação, arrecadação e fiscalização de tributos. CTN e CF.",
+  "principle of morality": "Princípio da moralidade.",
+  "principium moralitatis": "Princípio da moralidade.",
 
-  "commercial law": "Direito Comercial/Empresarial — disciplina atos de empresa, sociedades e títulos de crédito.",
-  "corporate law": "Direito Societário — tipos de sociedade, constituição, responsabilidade e governança.",
+  // Civil
+  "civil law": "Direito Civil.",
+  "ius civile": "Direito Civil.",
 
-  "international law": "Direito Internacional Público — normas que regem relações entre Estados e organizações.",
+  "contract": "Contrato — acordo de vontades.",
+  "pactum": "Contrato — acordo de vontades.",
 
-  "data protection law": "Lei Geral de Proteção de Dados — LGPD (Lei 13.709/18). Equivalente ao GDPR europeu.",
-  "brazilian internet civil framework": "Lei 12.965/14 — estabelece direitos, deveres e garantias para uso da internet no Brasil.",
+  "obligation": "Obrigação jurídica.",
+  "obligatio": "Obrigação jurídica.",
 
-  "copyright law": "Direito Autoral — proteção de obras intelectuais. Lei 9.610/98.",
-  "patent law": "Patentes — proteção de invenções por prazo determinado. INPI no Brasil.",
-  "trademark law": "Marcas — sinais distintivos registrados no INPI.",
+  "damages": "Danos/indenização.",
+  "damnum": "Danos/indenização.",
 
-  "environmental law": "Direito Ambiental — proteção do meio ambiente.",
-  "consumer protection law": "Código de Defesa do Consumidor — Lei 8.078/90.",
+  // Penal
+  "criminal law": "Direito Penal.",
+  "ius poenale": "Direito Penal.",
 
-  "jurisprudence": "Conjunto de decisões reiteradas dos tribunais que orientam a interpretação do direito.",
-  "precedent": "Decisão judicial que serve de parâmetro para casos futuros.",
-  "common law": "Sistema jurídico baseado em precedentes judiciais e costumes.",
+  "intentional crime": "Crime doloso.",
+  "dolus": "Crime doloso.",
 
-  "legal ethics": "Ética profissional do advogado.",
-  "legal history": "História do Direito — evolução dos sistemas jurídicos.",
+  "negligent crime": "Crime culposo.",
+  "culpa": "Crime culposo.",
 
-  "public finance": "Finanças Públicas — orçamento, receitas e despesas do Estado.",
-  "electoral law": "Direito Eleitoral — processo eleitoral.",
-  "immigration law": "Direito Migratório — entrada e permanência de estrangeiros.",
-  "health law": "Direito da Saúde — regulação sanitária.",
-  "banking law": "Direito Bancário — regulação do sistema financeiro.",
+  "self defense": "Legítima defesa.",
+  "legitima defensio": "Legítima defesa.",
 
-  "moot court": "Simulação de julgamento para treino de argumentação.",
-  "legal clinic": "Clínica Jurídica — prática supervisionada.",
+  // Processo
+  "jurisdiction": "Jurisdição.",
+  "iurisdictio": "Jurisdição.",
 
-  "nevext": "Nevext — criador e administrador deste glossário.",
-  "LUAH": "Liga Universitária de Ativismo pelos Direitos Humanos.",
+  "evidence": "Prova.",
+  "probatio": "Prova.",
+
+  "burden of proof": "Ônus da prova.",
+  "onus probandi": "Ônus da prova.",
+
+  // Trabalho
+  "labor law": "Direito do Trabalho.",
+  "ius laboris": "Direito do Trabalho.",
+
+  // Tributário
+  "tax law": "Direito Tributário.",
+  "ius tributarium": "Direito Tributário.",
+
+  // Empresarial
+  "commercial law": "Direito Empresarial.",
+  "ius mercatorum": "Direito Empresarial.",
+
+  // Internacional
+  "international law": "Direito Internacional.",
+  "ius gentium": "Direito Internacional.",
+
+  // Outros clássicos importantes
+  "good faith": "Boa-fé.",
+  "bona fide": "Boa-fé.",
+
+  "bad faith": "Má-fé.",
+  "mala fide": "Má-fé.",
+
+  "thing adjudged": "Coisa julgada.",
+  "res judicata": "Coisa julgada.",
+
+  "burden": "Ônus.",
+  "onus": "Ônus.",
+
+  "legal norm": "Norma jurídica.",
+  "norma iuris": "Norma jurídica."
 };
 // ══════════════════════════════════════
 //   STATE
