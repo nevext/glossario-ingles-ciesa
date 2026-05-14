@@ -268,7 +268,7 @@ const techGlossario = {
   "João Pedro Leitinho Duarte": "o também conhecido como JP, gente fina, so bebe muito as vezes. (CC - 2025)",
   "Andrey Dantas Soares": "Aluno de tecnologia. (CC - 2025) (Amante de Kikão)",
   "Caio Rodolfo Rodrigues Maciel": "Aluno de tecnologia. (CC - 2025)",
-  "Daniel Fernandes De oliveira Da Silva": "Aluno de tecnologia. (CC - 2025) (Aparentemente não tem medo de ser cancelado),
+  "Daniel Fernandes De oliveira Da Silva": "Aluno de tecnologia. (CC - 2025) (Aparentemente não tem medo de ser cancelado)",
   "Dymitre Tyziano Matos Arruda": "Aluno de tecnologia. (CC - 2025) (otimo em matematica)",
   "Eduardo Washington Fonseca Pinheiro": "Aluno de tecnologia. (CC - 2025)",
   "Erick Victor Rolim Sarah oliveira": "Aluno de tecnologia. (CC - 2025) (Já fez um projeto ambiental envolvendo coleta de lixo gamificada)",
@@ -421,124 +421,6 @@ const lawGlossario = {
   "LUAH": "Liga Universitária de Ativismo pelos Direitos Humanos.",
 };
 
-Em seg., 11 de mai. de 2026 às 18:54, David Neves <deividbartoszjr@gmail.com> escreveu:
-https://github.com/nevext/molly-game
-
-Em ter., 5 de mai. de 2026 às 14:54, David Neves <deividbartoszjr@gmail.com> escreveu:
-Versão 0.1 — conceito inicial, muita coisa em branco
-Versão 0.5 — prototype, mecânicas definidas
-Versão 1.0 — demo jogável
-Versão 2.0 — jogo completo
-
-Em qui., 23 de abr. de 2026 às 19:43, David Neves <deividbartoszjr@gmail.com> escreveu:
-infinitivo a marca é inf - to
-gerundio - ing
-
-sufixo agora, vamos ter o participio que vem antes,
-
-infinitivo: -ar, -er, -ir
-gerundio: -ando, -endo, -indo
-participio: -ado, -edo, -edo
-
-wm pt - br quando usa o participio ele por natureza ja remete a uma ideia de passado, em Enlgish participio é o passado básico dos verbos, tentado no passado
-
-participio regular em ingles:
-
--ED
-
-Test - tested
-Work - worked
-create - created
-Develop - developed
-Program - Programmed
-
-msm palavra funçoes diferentes, testar - teste - testado
-verbo mas com pé no adjetivo, 
-
-Participio irregular em ingles
-
-Be - been
-Go - gone
-Do - done
-See - Seen
-Know - known
-
-Ser/Estar - Sido
-
-adjetivo nao vai para o plural
-systemS distributed, analysiS automatic, são usados como adjetivo
-os que vem com to be,be,are, being antes do verbo
-
-participio nao é adjetivo vem sempre acompanhado de outro verbo, participio nao e feito para andar sozinho, 
-
-Locução verbal = dois verbos agindo como um, verbo auxiliar + verbo tradicional, 
-
-distribued systemS - are used
-interconnected nodeS - are composed
-
-Adjetives - Passive Voice
-
-
-frase = período, 
-
-Vozes verbais = ler mais
-
-o sujeito é o termo que concorda, concordancia verbal, o sistema processou os dados = os sistemas processaram os dados (o sistema obrigou a mudar)
-
-faz ação = praticante 
-sofreu ação = sofrendo
-
-Vozes verbais = sujeito sofre e pratica ação 
-
-exerce a ação verbal = voz ativa
-sofre a ação verbal = voz passiva, muito presente em pesquisa cientifica, sempre fala de objetos e assunos que sofrem açoes, os dados foram trabalhados a pesquisa foi realizada, a coleta foi realizada tal dia, ela é absurdamente presente quando se fala sobre texto cientifico
-
-
-oração sem sujeito = 
-
-Sufixo ED 
-
-Em sex., 13 de mar. de 2026 às 19:54, David Neves <deividbartoszjr@gmail.com> escreveu:
-""" ftp > arquivos
-smtp > email
-sockets > apps java
-http/s > hyper text transfer protocol
-
-rest (verbos, cliente servidor)
-- get (consulta de dados de rescurso, le)
-- post (cria recurso, )
-- put (atualiza o recurso)
-- patch (atualiza em batch(atualia varios recursos de uma vez so, hj em dia n vale mais a pena))
-- delete ()
-
-get --- ciesa.br/user/1 (caminhos, quer o usuario 1)
--nome  <   <  < <
--turma
--curso > > > > > > json
-
-(cerialização, trasnferir o tipi de dado para outro tipo de dado, json > web), em py quando recebe e mjson ele já tá formatado)
-
-post - - - -ciesa.br/user
-- nome > > > >      bd
-- turma
-- curso
-
-Sincrono >>>>>>>>>>>                Assincrono
-note(cliente) >>>> pc >>>>> (desce)
-                        >
-note(cliente2)          >
-                        >
-                    serasa
-
-Assincrono (melhor)
-cliente 1 pediu analise do credito servidor pediu a requisição,
-
-WSGI,ASGI (estudar)
-
-estrutura de dados, fila, pilha (revisar)
-
-
-
 // ══════════════════════════════════════
 //   STATE
 // ══════════════════════════════════════
@@ -566,7 +448,7 @@ function executarBusca(termo, mode) {
   const otherLabel = mode === 'tech' ? 'Law' : 'Tech';
   termo = termo.toLowerCase().trim();
 
-  const resultados = object.keys(glossario).filter(function(chave) {
+  const resultados = Object.keys(glossario).filter(function(chave) {
     return chave.toLowerCase().includes(termo) || glossario[chave].toLowerCase().includes(termo);
   });
 
@@ -636,13 +518,13 @@ function setupAutocomplete(inputEl, dropdown) {
     if (!val || !currentMode) { dropdown.classList.remove('open'); return; }
 
     var glossario = getGlossario();
-    var matches = object.keys(glossario).filter(function(k) { return k.toLowerCase().includes(val); }).slice(0, 8);
+    var matches = Object.keys(glossario).filter(function(k) { return k.toLowerCase().includes(val); }).slice(0, 8);
     if (!matches.length) { dropdown.classList.remove('open'); return; }
 
     matches.forEach(function(term) {
       var item = document.createElement('div');
       item.className = 'autocomplete-item';
-      var idx = term.toLowerCase().indexof(val);
+      var idx = term.toLowerCase().indexOf(val);
       item.innerHTML = term.slice(0, idx) + '<mark>' + term.slice(idx, idx + val.length) + '</mark>' + term.slice(idx + val.length);
       item.addEventListener('mousedown', function(e) {
         e.preventDefault();
@@ -982,7 +864,7 @@ function applyModeVisuals(mode) {
 // ══════════════════════════════════════
 //   INIT
 // ══════════════════════════════════════
-document.addEventListener('DoMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var inputEl  = document.getElementById('campo-pesquisa');
   var dropdown = document.getElementById('autocomplete-dropdown');
   var botao    = document.getElementById('botao-pesquisa');
